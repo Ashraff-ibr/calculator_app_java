@@ -1,63 +1,61 @@
+// Java program for simple calculator
+import java.io.*;
+import java.lang.*;
+import java.lang.Math;
 import java.util.Scanner;
 
-public class ChisomCalculator {
+// Driver class
+public class BasicCalculator {
+	// main function
+	public static void main(String[] args)
+	{
+		// Stores two numbers
+		double num1, num2;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+		// Take input from the user
+		Scanner sc = new Scanner(System.in);
 
-        System.out.println("Eriobu's Calculator");
-        System.out.println("-------------------");
+		System.out.println("Enter the numbers:");
 
-        double num1 = getNumberFromUser(scanner, "Enter the first number: ");
-        double num2 = getNumberFromUser(scanner, "Enter the second number: ");
+		// Take the inputs
+		num1 = sc.nextDouble();
+		num2 = sc.nextDouble();
 
-        System.out.println("\nResults:");
-        System.out.println("--------");
+		System.out.println("Enter the operator (+,-,*,/):");
 
-        performAddition(num1, num2);
-        performSubtraction(num1, num2);
-        performMultiplication(num1, num2);
-        performDivision(num1, num2);
+		char op = sc.next().charAt(0);
+		double o = 0;
 
-        scanner.close();
-    }
+		switch (op) {
+		// case to add two numbers
+		case '+':
+			o = num1 + num2;
+			break;
 
-    private static double getNumberFromUser(Scanner scanner, String prompt) {
-        double number;
-        while (true) {
-            System.out.print(prompt);
-            if (scanner.hasNextDouble()) {
-                number = scanner.nextDouble();
-                break;
-            } else {
-                System.out.println("Invalid input. Please enter a valid number.");
-                scanner.next(); // Clear the invalid input
-            }
-        }
-        return number;
-    }
+		// case to subtract two numbers
+		case '-':
+			o = num1 - num2;
+			break;
 
-    private static void performAddition(double num1, double num2) {
-        double sum = num1 + num2;
-        System.out.printf("Addition: %.2f%n", sum);
-    }
+		// case to multiply two numbers
+		case '*':
+			o = num1 * num2;
+			break;
 
-    private static void performSubtraction(double num1, double num2) {
-        double difference = num1 - num2;
-        System.out.printf("Subtraction: %.2f%n", difference);
-    }
+		// case to divide two numbers
+		case '/':
+			o = num1 / num2;
+			break;
 
-    private static void performMultiplication(double num1, double num2) {
-        double product = num1 * num2;
-        System.out.printf("Multiplication: %.2f%n", product);
-    }
+		default:
+			System.out.println("You enter wrong input");
+		}
 
-    private static void performDivision(double num1, double num2) {
-        if (num2 != 0) {
-            double quotient = num1 / num2;
-            System.out.printf("Division: %.2f%n", quotient);
-        } else {
-            System.out.println("Division by zero is not possible.");
-        }
-    }
+		System.out.println("The final result:");
+		System.out.println();
+
+		// print the final result
+		System.out.println(num1 + " " + op + " " + num2
+						+ " = " + o);
+	}
 }
