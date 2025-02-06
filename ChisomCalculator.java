@@ -44,7 +44,7 @@ public class BasicCalculator {
 
 		// case to divide two numbers
 		case '/':
-			o = num1 / num2;
+			o = num1/num2;
 			break;
 
 		default:
